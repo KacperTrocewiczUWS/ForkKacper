@@ -29,10 +29,10 @@ public class PaperDTO implements Serializable {
 
     private List<String> additionalAuthors;
 
-    @Schema(description = "ID tutora")
+    @Schema(description = "ID tutora", example = "1")
     private Long tutorId;
 
-    @Schema(description = "Imię i nazwisko tutora")
+    @Schema(description = "Imię i nazwisko tutora", example = "Anna Kowalska")
     private String tutorName;
 }
 

@@ -23,6 +23,7 @@ public class Paper {
     @SequenceGenerator(name = "paper_id_seq", sequenceName = "paper_id_seq", allocationSize = 1)
     private Long id;
 
+    @Column(name = "type", nullable = false)
     private String type;
 
     private String isbn;

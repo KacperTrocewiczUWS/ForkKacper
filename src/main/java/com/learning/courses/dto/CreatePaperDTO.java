@@ -29,7 +29,8 @@ public class CreatePaperDTO implements Serializable {
     @Schema(example = "Deep Learning for Education")
     private String topic;
 
-    @Schema(description = "Lista dodatkowych autorów (imię i nazwisko)")
+    @Schema(description = "Lista dodatkowych autorów (imię i nazwisko)",
+            example = "Adam Mickiewicz")
     private List<String> additionalAuthors;
 
     @NotNull

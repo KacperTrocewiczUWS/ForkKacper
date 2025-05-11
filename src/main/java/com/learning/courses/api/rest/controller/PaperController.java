@@ -2,10 +2,8 @@
 package com.learning.courses.api.rest.controller;
 
 import com.learning.courses.dto.CreatePaperDTO;
-import com.learning.courses.dto.PaperDTO;
 import com.learning.courses.service.PaperService;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

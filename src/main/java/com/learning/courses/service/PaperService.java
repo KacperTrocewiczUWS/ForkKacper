@@ -9,9 +9,14 @@ import com.learning.courses.repository.PaperRepository;
 import com.learning.courses.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.Collections;
 
 @Service
 public class PaperService {
+
+    private static final Logger logger = LoggerFactory.getLogger(PaperService.class);
 
     private final PaperRepository paperRepo;
     private final PersonRepository personRepo;
@@ -27,6 +32,9 @@ public class PaperService {
 
     @Transactional
     public Long createPaper(CreatePaperDTO dto) {
+        // logowanie
+        logger.info("Creating new paper for tutor ID: {}", dto.getTutorId());
+
         // 1) zamapuj podstawowe pola
         Paper paper = paperMapper.toEntity(dto);
 
@@ -40,9 +48,12 @@ public class PaperService {
         // 3) ustaw powiązanie
         paper.setTutor(tutor);
 
-        // 4) zapisz
-        paperMapper.toEntity(dto);
-        // 5) Zwróć id zapisanej osoby
+        // 4) obsłuż null dla dodatkowych autorów
+        if (paper.getAdditionalAuthors() == null) {
+            paper.setAdditionalAuthors(Collections.emptyList());
+        }
+
+        // 5) Zapisz i zwróć id zapisanej osoby
         return paperRepo.save(paper).getId();
     }
 }
