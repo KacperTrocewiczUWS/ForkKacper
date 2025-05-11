@@ -53,4 +53,42 @@ public abstract class ExceptionMapper {
   @Mapping(target = "message", expression = "java( ex.getMessage() )")
   public abstract ErrorResponseDTO toErrorResponseDTO(MissingGradeException ex);
 
+  //Added Exceptions
+
+  //all
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "errorType", expression = "java( ex.getClass().getSimpleName() )")
+  @Mapping(target = "message", expression = "java( ex.getMessage() )")
+  public abstract ErrorResponseDTO toErrorResponseDTO(AllAttributesInvalidException ex);
+
+  //only one
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "errorType", expression = "java( ex.getClass().getSimpleName() )")
+  @Mapping(target = "message", expression = "java( ex.getMessage() )")
+  public abstract ErrorResponseDTO toErrorResponseDTO(FileExtensionInvalidException ex);
+
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "errorType", expression = "java( ex.getClass().getSimpleName() )")
+  @Mapping(target = "message", expression = "java( ex.getMessage() )")
+  public abstract ErrorResponseDTO toErrorResponseDTO(FileResolutionInvalidException ex);
+
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "errorType", expression = "java( ex.getClass().getSimpleName() )")
+  @Mapping(target = "message", expression = "java( ex.getMessage() )")
+  public abstract ErrorResponseDTO toErrorResponseDTO(FileSizeInvalidException ex);
+
+  //two errors
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "errorType", expression = "java( ex.getClass().getSimpleName() )")
+  @Mapping(target = "message", expression = "java( ex.getMessage() )")   public abstract ErrorResponseDTO toErrorResponseDTO(FileResolutionAndExtensionInvalidException ex);
+
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "errorType", expression = "java( ex.getClass().getSimpleName() )")
+  @Mapping(target = "message", expression = "java( ex.getMessage() )")   public abstract ErrorResponseDTO toErrorResponseDTO(FileSizeAndResolutionInvalidException ex);
+
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "errorType", expression = "java( ex.getClass().getSimpleName() )")
+  @Mapping(target = "message", expression = "java( ex.getMessage() )")   public abstract ErrorResponseDTO
+  toErrorResponseDTO(FileSizeAndExtensionInvalidException ex);
+
 }
